@@ -44,7 +44,7 @@ You can set these env vars in a couple ways:
 - **Temporary**: Set these environment variables in your shell before running the tests. This is the easiest way to get started, but you'll have to set them every time you open a new terminal.
 - **Reusable**: If you anticipate developing for multiple sessions, set these environment variables in your shell profile (like `~/.bashrc` or `~/.zshrc`). This way, you won't have to set them every time you open a new terminal.
 
-The environment variables you'll need to set for each adapter can be found in [integration_tests/.env/](integration_tests/.env/).
+The environment variables you'll need to set for each adapter can be found in [integration_tests/.env/](integration_tests/.env/). You will need to source these for the tests to run correctly.
 
 ### Setup Postgres or other database targets
 
