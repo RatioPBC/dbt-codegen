@@ -54,12 +54,7 @@ To run the Postgres container, just run:
 
 ```shell
 make setup-db
-```
-
-Or, alternatively:
-
-```shell
-docker-compose up --detach postgres
+make create-db
 ```
 
 > [!NOTE]
