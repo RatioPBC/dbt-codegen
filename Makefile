@@ -19,7 +19,12 @@ dev: ## Installs dbt-* packages in develop mode along with development dependenc
 .PHONY: setup-db
 setup-db: ## Setup Postgres database with docker-compose for system testing.
 	@\
-	docker-compose up --detach postgres
+	docker compose up --detach --wait postgres
+
+.PHONY: create-db
+create-db: setup-db ## Setup Postgres database with docker-compose for system testing.
+	@\
+	docker compose exec postgres psql -U root -d postgres -tc "CREATE DATABASE codegen_test;"
 
 .PHONY: help
 help: ## Show this help message.
@@ -27,3 +32,4 @@ help: ## Show this help message.
 	@echo
 	@echo 'targets:'
 	@grep -E '^[8+a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
