@@ -5,3 +5,21 @@ services:
       - POSTGRES_USER=root
     ports:
       - "5432:5432"
+  vertica:
+    environment:
+      APP_DB_USER: "dbadmin"
+      APP_DB_PASSWORD: "vertica"
+      TZ: "America/Los_Angeles"
+    container_name: dbt-codegen-vertica-ce
+    image: vertica/vertica-ce
+    ports:
+      - "5433:5433"
+      - "5444:5444"
+    deploy:
+      mode: global
+    volumes:
+      - type: volume
+        source: vertica-data2
+        target: /data
+volumes:
+  vertica-data2:

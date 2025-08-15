@@ -26,6 +26,11 @@ create-db: setup-db ## Setup Postgres database with docker-compose for system te
 	@\
 	docker compose exec postgres psql -U root -d postgres -tc "CREATE DATABASE codegen_test;"
 
+.PHONY: setup-vertica
+setup-vertica: ## Setup Vertica database with docker-compose for system testing.
+	@\
+	docker compose up --detach --wait vertica
+
 .PHONY: help
 help: ## Show this help message.
 	@echo 'usage: make [target]'
