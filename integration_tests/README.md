@@ -92,7 +92,7 @@ Or more specific:
 ```shell
 make dev target=postgres
 # or
-python3 -m pip install dbt-core dbt-postgres
+python3 -m pip install dbt-core dbt-postgres tox
 ```
 
 Make sure to reload your virtual environment after installing the dependencies:
