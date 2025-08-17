@@ -2,11 +2,18 @@
 
 .PHONY: test
 test: ## Run the integration tests.
-	@./run_test.sh $(target)
+	@\
+		set -a && \
+		source integration_tests/.env/$(target).env && \
+		set +a && \
+		./run_test.sh $(target)
 
 .PHONY: test_tox
 test_tox: ## Run the integration tests with tox
 	@\
+	set -a && \
+	source integration_tests/.env/$(target).env && \
+	set +a && \
 	tox -e dbt_integration_$(target)
 
 .PHONY: dev
