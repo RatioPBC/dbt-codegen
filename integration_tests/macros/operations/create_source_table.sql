@@ -9,7 +9,7 @@
 {% do adapter.create_schema(target_schema) %}
 
 {% set drop_table_sql %}
-drop table if exists {{ target_schema }}.codegen_integration_tests__data_source_table {% if target.type == "redshift" %}cascade{% endif %}
+drop table if exists {{ target_schema }}.codegen_integration_tests__data_source_table {% if target.type in ["postgres", "redshift"] %}cascade{% endif %}
 {% endset %}
 
 {{ run_query(drop_table_sql) }}
